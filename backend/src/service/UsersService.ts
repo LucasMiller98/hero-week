@@ -2,7 +2,7 @@ import { compare, hash } from 'bcrypt';
 import { s3 } from "../config/aws";
 import { ICreateUsers, IUpdateUser } from "../interfaces/UsersInterface";
 import { UsersRepository } from "../repositories/UsersRepository";
-import { sign } from 'jsonwebtoken'
+import { sign, verify } from 'jsonwebtoken'
 import { v4 as uuid } from 'uuid'
 import { secretKeyToken } from '../utils/secretKeyToken'
 
@@ -91,13 +91,39 @@ export class UsersService {
       expiresIn: 60 * 15,
       subject: findUser.id
     })
+
+    const refreshToken = sign({email}, secretKey, {
+      subject: findUser.id,
+      expiresIn: '7d'
+    })
     
     return {
       token,
+      refresh_token: refreshToken,
       user: {
         name: findUser.name,
         email: findUser.email 
       }
+    }
+  }
+
+  async refreshToken(refresh_token: string) {
+    if(!refresh_token) {
+      throw new Error('Refresh token missing')
+    }
+
+    const secretKey = secretKeyToken()
+
+    const verifyRefreshToken = verify(refresh_token, secretKey)
+
+    const { sub } = verifyRefreshToken
+
+    const newToken = sign({ sub }, secretKey, {
+      expiresIn: 60 * 15
+    })
+
+    return {
+      token: newToken
     }
   }
 }

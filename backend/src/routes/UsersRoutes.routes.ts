@@ -20,10 +20,12 @@ export class UsersRoutes {
       '/create',
       this.usersController.store.bind(this.usersController)
     )
+    
     this.router.post(
       '/auth',
       this.usersController.auth.bind(this.usersController)
     )
+
     this.router.put(
       '/edit', 
       upload.single('avatar_url'),
@@ -31,6 +33,10 @@ export class UsersRoutes {
       this.usersController.update.bind(this.usersController)
     )
     
+    this.router.post(
+      '/refresh',
+      this.usersController.refreshToken.bind(this.usersController)
+    )
 
     return this.router
   }

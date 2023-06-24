@@ -15,6 +15,10 @@ export interface IAuth {
   password: string
 }
 
+export interface IRefreshToken {
+  refresh_token: string
+}
+
 export interface IUpdateUser {
   name: string
   oldPassword: string

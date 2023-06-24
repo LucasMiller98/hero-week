@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { 
   IAuth as ILogin,
+  IRefreshToken,
   IRequestCreateUsers, 
   IUpdateUser 
 } from '../interfaces/UsersInterface'
@@ -42,6 +43,18 @@ export class UsersController {
     
     try {
       const result = await this.usersService.auth(email, password)
+
+      return res.json(result)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async refreshToken(req: Request, res: Response, next: NextFunction) {
+    const { refresh_token } = req.body as IRefreshToken
+    
+    try {
+      const result = await this.usersService.refreshToken(refresh_token)
 
       return res.json(result)
     } catch (error) {
