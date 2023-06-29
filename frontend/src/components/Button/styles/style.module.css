@@ -1,0 +1,14 @@
+.button {
+  background-color: var(--secondary);
+  color: var(--white);
+  border-radius: 1.7rem;
+  margin-top: 1.6rem;
+  width: 100%;
+  padding: 1rem 0;
+  border: 0;
+  transition: all ease-in-out .2s;
+}
+
+.button:hover {
+  transform: scale(.97);
+}

@@ -1,0 +1,19 @@
+.figure_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.figure_container img {
+  border-radius: 50%;
+  width: 100%;
+  color: #fff;
+  margin: 2rem 0;
+}
+
+@media(max-width: 956px) {
+  .figure_container .isRegisterPage {
+    width: 40%;
+    margin-top: 0;
+  }
+}

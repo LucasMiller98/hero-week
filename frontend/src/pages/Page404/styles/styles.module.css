@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container h1 {
+  font-size: 6rem;
+}
+
+.container h2 {
+  font-size: 4rem;
+  font-weight: 400;
+}
+
+.container .paragraph_404 {
+  color: #4b4b4b;
+  width: 58%;
+  margin-bottom: 5rem;
+}
+
+.container .button_404 {
+  background-color: #2E77E9;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  border: 0;
+  padding: 1.7rem 3rem;
+  font-size: 1.7rem;
+  border-radius: 1rem;
+  justify-content: space-between;
+  transition: transform .2s;
+}
+
+.container .button_404:hover {
+  transform: scale(.9);
+}

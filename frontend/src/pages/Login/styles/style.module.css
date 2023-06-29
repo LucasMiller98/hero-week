@@ -1,0 +1,47 @@
+.background {
+  background-image: url('../../../assets/pexels-christian-buergi-6344695.jpg');
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  padding-bottom: 2rem;
+}
+
+.card {
+  background-color: var(--gray-100);
+  box-shadow: .4rem .8rem .4rem rgba(0, 0, 0, .2);
+  border-radius: 1.7rem;
+  padding: 4rem;
+  text-align: center;
+}
+
+.card h2 {
+  color: var(--white);
+  font-style: normal;
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+
+.container {
+  display: flex;
+  justify-content: end;
+}
+
+.form_login p {
+  font-weight: 600;
+}
+
+.form_login p a {
+  color: var(--white);
+  text-decoration: underline;
+}

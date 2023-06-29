@@ -1,0 +1,36 @@
+:root {
+  font-size: 62.5%;
+  --primary: #348789;
+  --secondary: #001489;
+  --gray-50: #dddfeb;
+  --gray-100: #97909050;
+  --gray-200: #535653;
+  --gray-300: #7c838b;
+  --white: #fff;
+  --black: #272b30;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  /* max-width: 13.40rem; */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2.1rem;
+  padding-right: 1rem;
+  /* width: 100%; */
+}
