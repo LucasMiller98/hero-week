@@ -49,6 +49,14 @@ api.interceptors.response.use(response => response, async (error: AxiosError | u
 
         failedRequest = []
       }
+  
+      return new Promise((resolve, reject) => {
+        failedRequest.push({
+          ...originalRequest,
+          onSuccess: (response) => resolve(response),
+          onFailure: (error) => reject(error)
+        })
+      })
     }
   }else{
     // localStorage.removeItem('token:hero-week')
