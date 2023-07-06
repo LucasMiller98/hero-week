@@ -28,21 +28,19 @@ export class SchedulesRepository {
     return result
   }
 
-  async findAllSchedules(date: Date) {
-    const listSchedules = await prisma.schedule.findMany({
+  async findAll(date: Date) {
+    const result = await prisma.schedule.findMany({
       where: {
         date: {
           gte: startOfDay(date),
-          lt: endOfDay(date)
+          lt: endOfDay(date),
         },
       },
-
       orderBy: {
-        date: 'asc'
-      }
-    })
-
-    return listSchedules
+        date: 'asc',
+      },
+    });
+    return result;
   }
 
   async update(id: string, date: Date) {

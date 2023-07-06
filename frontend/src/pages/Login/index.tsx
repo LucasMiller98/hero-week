@@ -2,16 +2,18 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { AiOutlineMail } from 'react-icons/ai'
 import { BsKey } from 'react-icons/bs'
+import { Link } from 'react-router-dom'
 import * as yup from 'yup'
-import logo from '../../assets/logo.webp'
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
+import { Photo } from '../../components/Photo'
+import { useAuthContext } from '../../context/hooks/useAuthContext'
 import style from './styles/style.module.css'
 import { IFormValues } from './types/types'
-import { Link } from 'react-router-dom'
-import { Photo } from '../../components/Photo'
 
 export function Login() {
+
+  const { signIn } = useAuthContext()
 
   const schema = yup.object().shape({
     email: yup
@@ -29,9 +31,14 @@ export function Login() {
     resolver: yupResolver(schema),
   });
 
-  const onHandleSubmit = handleSubmit(async (data) => {
-    console.log("data: ",data)
-
+  const onHandleSubmit = handleSubmit(({ email, password }: IFormValues) => {
+    try {
+      signIn({ email, password })
+    } catch (error) {
+      if(error instanceof Error) {
+        console.error(error.message)
+      }
+    }
   })
   
   return (

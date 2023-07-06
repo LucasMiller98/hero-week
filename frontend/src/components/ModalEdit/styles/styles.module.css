@@ -1,0 +1,109 @@
+.container_modal_edit {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, .3);
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--primary);
+  border-radius: 1.6rem 1.6rem 0 0;
+  color: var(--white);
+  padding: 2rem;
+}
+
+.header > h2 {
+  font-size: 2rem;
+}
+
+.header svg {
+  cursor: pointer;
+}
+
+.modal_body > p {
+  color: #000;
+  margin-top: 0;
+}
+
+
+.modal {
+  position: fized;
+  /* top: 10%;
+  left: 50%; */
+  width: 50rem;
+  /* height: 100vh; */
+  background-color: var(--white);
+  transform: translate(50%, 50%);
+  border-radius: 1.6rem;
+}
+
+.modal_body {
+  padding: 1rem 2rem;
+}
+
+.modal_body > p {
+  color: var(--secondary);
+  font-size: 1.9rem;
+  margin-bottom: 1rem;
+}
+
+.input_container {
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.input_container > input[type='date'], 
+.input_container > select {
+  border: .1rem solid var(--primary);
+  border-radius: 1rem;
+  color: var(--primary);
+  width: 40%;
+  padding: .3rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem 2rem 2rem;
+}
+
+.footer > button:first-child {
+  border: .1rem solid var(--secondary);
+  background: none;
+  color: var(--secondary);
+  transition: all ease-in-out .3s;
+}
+
+.footer > button:first-child:hover {
+  background: var(--gray-50);
+}
+
+.footer > button {
+  text-decoration: none;
+  font-weight: 300px;
+  border-radius: 1.6rem;
+  padding: .3rem 1.5rem;
+  width: 30%;
+}
+
+.footer > button:nth-child(2) {
+  border: .1rem solid var(--secondary);
+  background-color: var(--secondary);
+  color: var(--white);
+  transition: all ease-in-out .3s;
+}
+
+.footer > button:nth-child(2):hover {
+  background-color: var(--secondary-50);
+}

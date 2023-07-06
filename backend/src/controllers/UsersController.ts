@@ -16,7 +16,13 @@ export class UsersController {
   }
   
   async index(req: Request, res: Response, next: NextFunction) {
-    
+    try {
+      const listUsers = await this.usersService.index()
+
+      return res.json(listUsers)
+    } catch (error) {
+      next(error)
+    }
   }
 
   async show(req: Request, res: Response, next: NextFunction) {

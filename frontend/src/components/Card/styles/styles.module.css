@@ -1,0 +1,46 @@
+.container_card {
+  display: flex;
+  background-color: var(--white);
+  border-radius: .8rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.7rem;
+  box-shadow: .4rem .4rem .8rem rgba(0, 0, 0, .3);
+}
+
+.container_card > div {
+  display: flex;
+  align-items: center;
+
+}
+
+.container_hours > span {
+  color: var(--white);
+  background-color: var(--secondary);
+  padding: 1.7rem;
+  border-radius: .8rem 0 0 .8rem;
+  margin-right: 1rem;
+}
+
+.container_card > div > p {
+  color: var(--primary);
+  margin-top: 0;
+  font-size: 1.8rem;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-around;
+  width: 7rem;
+  margin-right: 2rem;
+}
+
+.icons svg {
+  cursor: pointer;
+  transition: all ease-in-out .3s;
+  user-select: none;
+}
+
+.icons svg:hover {
+  transform: scale(.97);
+}

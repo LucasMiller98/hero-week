@@ -32,23 +32,15 @@ export function Register() {
     resolver: yupResolver(schema)
   })
 
-  const onHandleSubmit = handleSubmit(async (data) => {
+  const onHandleSubmit = handleSubmit(async ({name, email, password}) => {
 
     try {
       
-      const { data: data_api } = await api.post<ICreateUsers>('/users/create', data)
-
-      if(!data_api.email) {
-        throw new Error(errors.email?.message)
-      }
-
-      if(!data_api.name) {
-        throw new Error(errors.name?.message)
-      }
-
-      if(!data_api.password) {
-        throw new Error(errors.password?.message)
-      }
+      await api.post<ICreateUsers>('/users/create', {
+        name,
+        email,
+        password
+      })
 
       return toast.success('Usuário cadastrado com sucesso!')
       
@@ -88,6 +80,7 @@ export function Register() {
               icon={<BsPerson size={20} />}
               { ...register('name', { required: true }) }
               error={ errors.name && errors.name.message }
+              autoComplete='off'
             />
 
             <Input 
@@ -96,6 +89,7 @@ export function Register() {
               icon={<AiOutlineMail size={20} />}
               { ...register('email', { required: true }) }
               error={ errors.email && errors.email.message }
+              autoComplete='off'
             />
             
             <Input 
@@ -104,6 +98,7 @@ export function Register() {
               icon={<BsKey size={20} />}
               { ...register('password', { required: true }) }
               error={ errors.password && errors.password.message }
+              autoComplete='off'
             />
 
             <Button type='submit'>
@@ -112,7 +107,7 @@ export function Register() {
 
             <p className={style.question_paragraph}>
               Já se cadastrou? 
-              <Link to='/'>Voltar à página inicial</Link>
+              <Link className={style.question_paragraph} to='/'>Voltar à página inicial</Link>
             </p>
           </form>
         </div>

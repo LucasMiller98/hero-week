@@ -4,11 +4,16 @@
   justify-content: center;
 }
 
-.figure_container img {
+.figure_container .img {
   border-radius: 50%;
-  width: 100%;
   color: #fff;
+  width: 33%;
   margin: 2rem 0;
+}
+
+img.isRegisterPage {
+  width: 100%;
+  border-radius: 50%;
 }
 
 @media(max-width: 956px) {

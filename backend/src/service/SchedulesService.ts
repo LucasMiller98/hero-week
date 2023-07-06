@@ -46,12 +46,10 @@ export class SchedulesService {
   }
 
   async index(date: Date) {
-    const listSchedules = await this.schedulesRepository.findAllSchedules(date)
-    console.log(listSchedules)
+    const result = await this.schedulesRepository.findAll(date);
 
-    return listSchedules
+    return result;
   }
-
   async update(id: string, date: Date, user_id: string) {
     const dateFormatted = new Date(date)
     const hourStart = startOfHour(dateFormatted)

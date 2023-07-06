@@ -32,17 +32,15 @@ export class SchedulesController {
     }
   }
 
-  async index(req: Request, res: Response, next: NextFunction) {
-
-    const { date } = req.query
-    const parseDate = date ? parseISO(date.toString()) : new Date()
-    
+  async index(request: Request, response: Response, next: NextFunction) {
+    const { date } = request.query;
+    const parseDate = date ? parseISO(date.toString()) : new Date();
     try {
-      const listSchedules = await this.schedulesService.index(parseDate)
+      const result = await this.schedulesService.index(parseDate);
 
-      return res.json(listSchedules)
+      return response.json(result);
     } catch (error) {
-      next(error)
+      next(error);
     }
   }
 

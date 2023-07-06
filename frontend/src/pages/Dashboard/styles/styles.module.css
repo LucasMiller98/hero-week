@@ -1,0 +1,82 @@
+.data_title {
+  margin-top: 1.5rem;
+}
+
+.data_title p {
+  color: #000;
+  margin-bottom: 2rem;
+}
+
+.data_title h2 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.data_title h2, .data_title p {
+  color: var(--primary);
+}
+
+.calendar {
+  background-color: var(--primary);
+  height: fit-content;
+  padding: 1rem;
+  border-radius: 1rem;
+  color: var(--white);
+  box-shadow: .4rem .8rem .4rem rgba(0, 0, 0, .3);
+}
+
+.next_hours {
+  color: var(--secondary);
+  font-size: 1.7rem;
+}
+
+.day:not(.disabled) {
+  color: var(--black);
+  margin: .15rem;
+  background-color: var(--white);
+  width: 4rem;
+  height: 4rem;
+  border-radius: .5rem;
+}
+
+.day.disabled {
+  background-color: var(--gray-200);
+}
+
+.selected {
+  color: var(--white) !important;
+  background-color: var(--secondary) !important;
+}
+
+.schedule {
+  display: flex;
+}
+
+.card_wrapper, .picker {
+  width: 80rem;
+}
+
+.card_wrapper {
+  padding: 0 1rem 2.7rem 0;
+  max-height: 60vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.card_wrapper::-webkit-scrollbar-track {
+  background-color: var(--gray-50);
+}
+
+.card_wrapper::-webkit-scrollbar {
+  width: .5rem;
+}
+
+.card_wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: .8rem;
+}
+
+.piker {
+  display: flex;
+  justify-content: center;
+}

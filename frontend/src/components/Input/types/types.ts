@@ -5,4 +5,5 @@ export interface IInputProps {
   type: 'password' | 'date' | 'text' | 'number'
   error?: string
   icon?: ReactNode
+  autoComplete?: string
 }

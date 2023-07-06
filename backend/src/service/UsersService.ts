@@ -9,9 +9,15 @@ import { secretKeyToken } from '../utils/secretKeyToken'
 export class UsersService {
 
   private usersRepository: UsersRepository
-
+  
   constructor() {
     this.usersRepository = new UsersRepository()
+  }
+
+  async index() {
+    const listUsers = await this.usersRepository.listAllUsers()
+
+    return listUsers
   }
   
   async create({ name, email, password }: ICreateUsers) {
@@ -79,7 +85,7 @@ export class UsersService {
       throw new Error('User or password invalid.')
     }
 
-    const passwordMath = compare(password, findUser.password)
+    const passwordMath = await compare(password, findUser.password)
     
     if(!passwordMath) {
       throw new Error('User or password invalid.')
@@ -102,28 +108,37 @@ export class UsersService {
       refresh_token: refreshToken,
       user: {
         name: findUser.name,
-        email: findUser.email 
+        email: findUser.email,
+        avatar_url: findUser.avatar_url
       }
     }
   }
 
   async refreshToken(refresh_token: string) {
-    if(!refresh_token) {
-      throw new Error('Refresh token missing')
+    if (!refresh_token) {
+      throw new Error('Refresh token missing');
+    }
+    let secretKeyRefresh: string | undefined =
+      process.env.ACCESS_TOKEN_SECRET_KEY_REFRESH;
+    if (!secretKeyRefresh) {
+      throw new Error('There is no refresh token key');
     }
 
-    const secretKey = secretKeyToken()
+    let secretKey: string | undefined = process.env.ACCESS_KEY_TOKEN;
+    if (!secretKey) {
+      throw new Error('There is no refresh token key');
+    }
+    const verifyRefreshToken = verify(refresh_token, secretKeyRefresh);
 
-    const verifyRefreshToken = verify(refresh_token, secretKey)
-
-    const { sub } = verifyRefreshToken
+    const { sub } = verifyRefreshToken;
 
     const newToken = sign({ sub }, secretKey, {
-      expiresIn: 60 * 15
-    })
-
-    return {
-      token: newToken
-    }
+      expiresIn: '1h',
+    });
+    const refreshToken = sign({ sub }, secretKeyRefresh, {
+      expiresIn: '7d',
+    });
+    return { token: newToken, refresh_token: refreshToken };
   }
+
 }

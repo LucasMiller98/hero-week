@@ -16,6 +16,12 @@ export class UsersRoutes {
   }
   
   getRoutes(): Router {
+
+    this.router.get(
+      '/findAll', 
+      this.usersController.index.bind(this.usersController)
+    )
+    
     this.router.post(
       '/create',
       this.usersController.store.bind(this.usersController)
